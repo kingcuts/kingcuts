@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>King Cuts | صالون كينغ كتس</title>
+    <meta name="description" content="صالون حلاقة للرجال - حجز عبر واتساب. King Cuts - Red & Gray theme." />
+    <meta name="author" content="Mahmoud Hamadi" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="King Cuts | صالون كينغ كتس" />
+    <meta property="og:description" content="احجز موعدك عبر واتساب. أفضل قصات الشعر واللحية." />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#fff1f2',
+                100: '#ffe4e6',
+                200: '#fecdd3',
+                300: '#fda4af',
+                400: '#fb7185',
+                500: '#f43f5e',
+                600: '#e11d48', // red theme
+                700: '#be123c',
+                800: '#9f1239',
+                900: '#881337',
+              },
+              neutral: {
+                900: '#0f0f12',
+                800: '#1a1a1f',
+              }
+            },
+            fontFamily: {
+              ar: ['Cairo', 'system-ui', 'sans-serif'],
+              en: ['Poppins', 'system-ui', 'sans-serif']
+            },
+            boxShadow: {
+              soft: '0 10px 30px rgba(0,0,0,0.15)'
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      :root {
+        --brand-red: #e11d48; /* primary-600 */
+      }
+      html[dir="rtl"] body { font-family: var(--font-ar, 'Cairo'), system-ui, sans-serif; }
+      html[dir="ltr"] body { font-family: var(--font-en, 'Poppins'), system-ui, sans-serif; }
+      /* Fancy underline hover */
+      .link-underline { background: linear-gradient(transparent 60%, rgba(225,29,72,.35) 0); }
+    </style>
+  </head>
+  <body class="bg-neutral-900 text-white selection:bg-primary-600/40">
+    <!-- Decorative background -->
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
+      <div class="absolute -top-24 right-0 h-72 w-72 translate-x-24 rounded-full bg-primary-600/30 blur-3xl"></div>
+      <div class="absolute -bottom-24 left-0 h-72 w-72 -translate-x-24 rounded-full bg-gray-600/20 blur-3xl"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-neutral-900/70 border-b border-white/5">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between gap-4">
+          <a href="#home" class="flex items-center gap-3 group">
+            <div class="h-10 w-10 grid place-items-center rounded-xl bg-primary-600 text-white font-bold shadow-soft group-hover:scale-105 transition">
+              <span class="text-xl">👑</span>
+            </div>
+            <div>
+              <div class="text-lg font-extrabold">King Cuts</div>
+              <div id="slogan" class="text-xs text-gray-300">تألّق بمظهرك الملكي</div>
+            </div>
+          </a>
+
+          <!-- Nav -->
+          <nav class="hidden md:flex items-center gap-6">
+            <a href="#home" class="text-sm hover:text-primary-300 link-underline p-2 rounded" data-i18n="nav.home">الرئيسية</a>
+            <a href="#services" class="text-sm hover:text-primary-300 link-underline p-2 rounded" data-i18n="nav.services">الخدمات</a>
+            <a href="#contact" class="text-sm hover:text-primary-300 link-underline p-2 rounded" data-i18n="nav.contact">تواصل</a>
+            <a href="https://wa.me/9613949082?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%D9%83%D9%8A%D9%86%D8%BA%20%D9%83%D8%AA%D8%B3%20-%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF" target="_blank" rel="noopener" class="text-sm bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-xl shadow-soft" data-i18n="nav.book">احجز الآن</a>
+          </nav>
+
+          <!-- Controls -->
+          <div class="flex items-center gap-3">
+            <!-- Language toggle -->
+            <button id="langBtn" class="text-xs sm:text-sm px-3 py-1 rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/5" aria-label="Change Language">EN</button>
+            <!-- Mobile menu -->
+            <button id="menuBtn" class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-white/10 hover:bg-white/10" aria-label="Open Menu">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile drawer -->
+      <div id="mobileNav" class="md:hidden hidden border-t border-white/5 bg-neutral-800/70">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-2">
+          <a href="#home" class="py-2" data-i18n="nav.home">الرئيسية</a>
+          <a href="#services" class="py-2" data-i18n="nav.services">الخدمات</a>
+          <a href="#contact" class="py-2" data-i18n="nav.contact">تواصل</a>
+          <a href="https://wa.me/9613949082?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%D9%83%D9%8A%D9%86%D8%BA%20%D9%83%D8%AA%D8%B3%20-%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF" target="_blank" rel="noopener" class="py-2 text-primary-300" data-i18n="nav.book">احجز الآن</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="relative overflow-hidden">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 items-center py-16">
+          <div>
+            <h1 id="heroTitle" class="text-4xl sm:text-5xl font-extrabold leading-tight">
+              صالون <span class="text-primary-400">King Cuts</span>
+            </h1>
+            <p id="heroSubtitle" class="mt-4 text-gray-300 text-lg">
+              ارفع مستوى إطلالتك مع حلاقة احترافية، تشذيب لحية، وعناية كاملة.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="https://wa.me/9613949082?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%D9%83%D9%8A%D9%86%D8%BA%20%D9%83%D8%AA%D8%B3%20-%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 px-5 py-3 rounded-xl shadow-soft">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3C9.383 3 4 8.383 4 15c0 2.672.879 5.146 2.365 7.158L4 29l6.988-2.27A11.901 11.901 0 0 0 16 27c6.617 0 12-5.383 12-12S22.617 3 16 3m6.461 17.66c-.273.773-1.359 1.418-2.074 1.505a5.43 5.43 0 0 1-2.48-.156a9.934 9.934 0 0 1-2.292-1.02a15.767 15.767 0 0 1-5.01-5.03c-.563-.922-1.086-1.89-1.297-2.952c-.141-.723.047-1.594.555-2.152c.258-.285.594-.47.957-.574c.246-.07.559-.141.801-.047c.246.098.383.355.488.59c.347.781.73 1.547 1.074 2.328c.133.285.266.585.254.89c-.024.555-.746.832-1.098 1.234c-.145.168-.328.367-.313.594c.02.305.238.59.41.828a12.266 12.266 0 0 0 2.28 2.48c.402.332.875.586 1.375.766c.203.07.453.137.656.043c.445-.203.758-.676 1.082-1.043c.164-.191.375-.442.645-.41c.313.039.617.219.895.375c.77.438 1.523.914 2.297 1.344c.242.109.496.231.617.48c.125.262.066.57-.012.84"/></svg>
+                <span data-i18n="cta.book">احجز عبر واتساب</span>
+              </a>
+              <a href="#services" class="inline-flex items-center gap-2 border border-white/10 hover:border-white/20 px-5 py-3 rounded-xl">
+                <span data-i18n="cta.viewServices">عرض الخدمات</span>
+              </a>
+            </div>
+            <p class="mt-6 text-xs text-gray-400" id="byline">كتبه: محمود حمّادي</p>
+          </div>
+          <div class="relative">
+            <div class="aspect-[4/3] rounded-2xl border border-white/10 bg-gradient-to-br from-neutral-800 to-neutral-900 shadow-soft p-1">
+              <div class="h-full w-full rounded-[1rem] grid place-items-center text-center">
+                <img src="/mahmoud.jfif" width="250px height="25%"/>	
+                <p class="mt-3 text-sm text-gray-400" data-i18n="hero.mock">جودة، أناقة، ودقّة.💈</p>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-16 border-t border-white/5 bg-neutral-800/30">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <h2 class="text-3xl font-extrabold" data-i18n="services.title">خدماتنا</h2>
+          <p class="mt-2 text-gray-300" data-i18n="services.subtitle">نقدّم باقات تناسب كل الأذواق بلمسة ملكية.</p>
+        </div>
+
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Card 1 -->
+          <div class="rounded-2xl border border-white/10 bg-neutral-900/60 p-6 hover:-translate-y-0.5 transition shadow-soft">
+            <div class="text-3xl">✂️</div>
+            <h3 class="mt-3 text-xl font-bold" data-i18n="services.cutTitle">قص شعر احترافي</h3>
+            <p class="mt-2 text-gray-400" data-i18n="services.cutDesc">قصات عصرية وكلاسيكية تناسب شكل وجهك.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="rounded-2xl border border-white/10 bg-neutral-900/60 p-6 hover:-translate-y-0.5 transition shadow-soft">
+            <div class="text-3xl">🧔🏻</div>
+            <h3 class="mt-3 text-xl font-bold" data-i18n="services.beardTitle">تشذيب اللحية</h3>
+            <p class="mt-2 text-gray-400" data-i18n="services.beardDesc">تشكيل دقيق وحدود نظيفة مع عناية بالبشرة.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="rounded-2xl border border-white/10 bg-neutral-900/60 p-6 hover:-translate-y-0.5 transition shadow-soft">
+            <div class="text-3xl">💆🏻‍♂️</div>
+            <h3 class="mt-3 text-xl font-bold" data-i18n="services.careTitle">عناية كاملة</h3>
+            <p class="mt-2 text-gray-400" data-i18n="services.careDesc">غسيل، ستايلينغ، وماسك تبريد لتجديد الانتعاش.</p>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <a href="https://wa.me/9613949082?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%AC%D8%B2%20%D9%84%D8%AE%D8%AF%D9%85%D8%A9" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 px-5 py-3 rounded-xl shadow-soft">
+            <span data-i18n="services.book">احجز خدمة الآن</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <h2 class="text-3xl font-extrabold" data-i18n="contact.title">تواصل معنا</h2>
+            <p class="mt-2 text-gray-300" data-i18n="contact.subtitle">للاستفسار أو الحجز السريع، تواصل عبر واتساب أو اتصال مباشر.</p>
+
+            <div class="mt-6 space-y-3">
+              <a href="https://wa.me/9613949082" target="_blank" rel="noopener" class="flex items-center gap-3 w-max bg-white/5 hover:bg-white/10 px-4 py-2 rounded-xl border border-white/10">
+                <span class="text-xl">🟢</span>
+                <span class="font-semibold" dir="ltr">+961 3 949 082</span>
+                <span class="text-xs text-gray-400" data-i18n="contact.whatsapp">واتساب مباشر</span>
+              </a>
+              <a href="tel:+9613949082" class="flex items-center gap-3 w-max bg-white/5 hover:bg-white/10 px-4 py-2 rounded-xl border border-white/10">
+                <span class="text-xl">📞</span>
+                <span class="font-semibold" dir="ltr">+961 3 949 082</span>
+                <span class="text-xs text-gray-400" data-i18n="contact.call">اتصال</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-neutral-900/60 p-4 shadow-soft">
+            <div class="aspect-[4/3] w-full overflow-hidden rounded-xl">
+              <!-- Optional: Replace q= with your exact address for a precise pin -->
+              <iframe id="mapFrame" class="h-full w-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Barbershop%20Lebanon&output=embed"></iframe>
+            </div>
+            <p class="mt-3 text-sm text-gray-400" data-i18n="contact.locationNote">الموقع التقريبي ظاهر على الخريطة. حدّث العنوان من ملف HTML.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-neutral-800/60 py-8">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-sm text-gray-400">
+            © <span id="year"></span> <span class="font-semibold">King Cuts</span> — <span data-i18n="footer.rights">جميع الحقوق محفوظة</span>
+          </p>
+          <p class="text-sm text-gray-400" id="footerLocation">📍 <span data-i18n="footer.location">موقع الصالون: لبنان — مار ضومط سن الفيل فرع أول </span></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script: i18n + interactions -->
+    <script>
+      const TEXT = {
+        ar: {
+          slogan: 'تألّق بمظهرك الملكي',
+          heroTitle: 'صالون <span class="text-primary-400">King Cuts</span>',
+          heroSubtitle: 'ارفع مستوى إطلالتك مع حلاقة احترافية، تشذيب لحية، وعناية كاملة.',
+          byline: 'كتبه: محمود حمّادي',
+          nav: { home: 'الرئيسية', services: 'الخدمات', contact: 'تواصل', book: 'احجز الآن' },
+          cta: { book: 'احجز عبر واتساب', viewServices: 'عرض الخدمات' },
+          hero: { mock: 'جودة، أناقة، ودقّة.' },
+          services: {
+            title: 'خدماتنا', subtitle: 'نقدّم باقات تناسب كل الأذواق بلمسة ملكية.',
+            cutTitle: 'قص شعر احترافي', cutDesc: 'قصات عصرية وكلاسيكية تناسب شكل وجهك.',
+            beardTitle: 'تشذيب اللحية', beardDesc: 'تشكيل دقيق وحدود نظيفة مع عناية بالبشرة.',
+            careTitle: 'عناية كاملة', careDesc: 'غسيل، ستايلينغ، وماسك تبريد لتجديد الانتعاش.',
+            book: 'احجز خدمة الآن'
+          },
+          contact: { title: 'تواصل معنا', subtitle: 'للاستفسار أو الحجز السريع، تواصل عبر واتساب أو اتصال مباشر.', whatsapp: 'واتساب مباشر', call: 'اتصال' },
+          footer: { rights: 'جميع الحقوق محفوظة', location: 'موقع الصالون: لبنان — مار ضومط سن الفيل فرع أول ' }
+        },
+        en: {
+          slogan: 'Look sharp. Rule the day.',
+          heroTitle: 'Salon <span class="text-primary-400">King Cuts</span>',
+          heroSubtitle: 'Level up your look with expert cuts, beard trims, and full care.',
+          byline: 'Written by: Mahmoud Hamadi',
+          nav: { home: 'Home', services: 'Services', contact: 'Contact', book: 'Book Now' },
+          cta: { book: 'Book on WhatsApp', viewServices: 'View Services' },
+          hero: { mock: 'Quality, style, precision.' },
+          services: {
+            title: 'Our Services', subtitle: 'Packages for every style—with a royal touch.',
+            cutTitle: 'Pro Haircut', cutDesc: 'Modern & classic cuts tailored to your face shape.',
+            beardTitle: 'Beard Trim', beardDesc: 'Sharp lines and skin care for a clean finish.',
+            careTitle: 'Full Care', careDesc: 'Wash, styling, and cooling mask for refreshment.',
+            book: 'Book a Service'
+          },
+          contact: { title: 'Contact Us', subtitle: 'For questions or quick booking, WhatsApp or call.', whatsapp: 'WhatsApp Direct', call: 'Call' },
+          footer: { rights: 'All rights reserved', location: 'Salon Location: Lebanon — set the address here' }
+        }
+      };
+
+      const el = (sel) => document.querySelector(sel);
+      const els = (sel) => Array.from(document.querySelectorAll(sel));
+
+      const applyLang = (lang) => {
+        const t = TEXT[lang];
+        document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        el('#slogan').textContent = t.slogan;
+        el('#heroTitle').innerHTML = t.heroTitle;
+        el('#heroSubtitle').textContent = t.heroSubtitle;
+        el('#byline').textContent = t.byline;
+        els('[data-i18n^="nav."]').forEach(a => {
+          const k = a.getAttribute('data-i18n').split('.')[1];
+          a.textContent = t.nav[k];
+        });
+        els('[data-i18n^="cta."]').forEach(a => {
+          const k = a.getAttribute('data-i18n').split('.')[1];
+          a.textContent = t.cta[k];
+        });
+        els('[data-i18n^="services."]').forEach(a => {
+          const k = a.getAttribute('data-i18n').split('.')[1];
+          a.textContent = t.services[k];
+        });
+        els('[data-i18n^="contact."]').forEach(a => {
+          const k = a.getAttribute('data-i18n').split('.')[1];
+          a.textContent = t.contact[k];
+        });
+        els('[data-i18n^="footer."]').forEach(a => {
+          const k = a.getAttribute('data-i18n').split('.')[1];
+          a.textContent = t.footer[k];
+        });
+        el('#langBtn').textContent = lang === 'ar' ? 'EN' : 'AR';
+        localStorage.setItem('kingcuts_lang', lang);
+      };
+
+      // Controls
+      el('#langBtn').addEventListener('click', () => {
+        const current = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+        applyLang(current === 'ar' ? 'en' : 'ar');
+      });
+
+      el('#menuBtn').addEventListener('click', () => {
+        el('#mobileNav').classList.toggle('hidden');
+      });
+
+      // Prefill from storage / default Arabic
+      applyLang(localStorage.getItem('kingcuts_lang') || 'ar');
+
+      // Auto year
+      el('#year').textContent = new Date().getFullYear();
+
+      // Optional: update map to a clearer query including brand name
+      const brandQuery = encodeURIComponent('King Cuts Barbershop Lebanon');
+      el('#mapFrame').src = `https://www.google.com/maps?q=33.8842374,35.5385422&hl=ar&z=15&output=embed`;
+    </script>
+  </body>
+</html>
